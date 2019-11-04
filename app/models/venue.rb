@@ -11,4 +11,9 @@
 #
 
 class Venue < ApplicationRecord
+
+  def bookmarks
+    return Bookmark.where( {:venue_id => self.id} )
+  end
+
 end

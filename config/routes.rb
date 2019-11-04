@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   #bookmark
   match("/add_bookmark", {:controller => "application", :action => "add_bookmark", :via => "get"} )
-  match("/remove_bookmark", {:controller => "application", :action => "remove_bookmark", :via => "get"} )
+  match("/remove_bookmark/:id", {:controller => "application", :action => "remove_bookmark", :via => "get"} )
 
 
 

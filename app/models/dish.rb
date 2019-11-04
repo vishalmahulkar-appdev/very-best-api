@@ -10,4 +10,10 @@
 #
 
 class Dish < ApplicationRecord
+
+  def bookmarks
+    return Bookmark.where( {:dish_id => self.id} )
+  end
+
+
 end
