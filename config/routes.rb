@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   match("/dishes", {:controller => "application", :action => "list_dishes", :via => "get"} )
   match("/dishes/:id", {:controller => "application", :action => "dish_details", :via => "get"} )
   match("/dishes/:id/bookmarks", {:controller => "application", :action => "list_dish_bookmarks", :via => "get"} )
+  match("/dishes/:id/experts", {:controller => "application", :action => "dish_experts", :via => "get"} )
+
 
   #neighborhoods
   match("/neighborhoods", {:controller => "application", :action => "list_neighborhoods", :via => "get"} )
@@ -15,6 +17,8 @@ Rails.application.routes.draw do
   match("/venues", {:controller => "application", :action => "list_venues", :via => "get"} )
   match("/venues/:id", {:controller => "application", :action => "venue_details", :via => "get"} )
   match("/venues/:id/bookmarks", {:controller => "application", :action => "list_venue_bookmarks", :via => "get"} )
+  match("/venues/:id/specialties", {:controller => "application", :action => "venue_specialties", :via => "get"} )
+  match("/venues/:id/fans", {:controller => "application", :action => "venue_fans", :via => "get"} )
 
   #users
   match("/users", {:controller => "application", :action => "list_users", :via => "get"} )

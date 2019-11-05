@@ -9,7 +9,14 @@ class ApplicationController < ActionController::Base
 
   # dishes
   def list_dishes
-    answer = Dish.all
+
+    cuisine_id = params.fetch(:cuisine_id, nil)
+    if cuisine_id.nil?
+      answer = Dish.all
+    else
+      c = Cuisine.where( {:id => cuisine_id} ).at(0)
+      answer = c.dishes
+    end
 
     render( {:plain => answer.to_json } )
   end
@@ -27,6 +34,13 @@ class ApplicationController < ActionController::Base
     render( {:plain => answer.to_json } )
   end
 
+  def dish_experts
+    d = Dish.where( {:id => params.fetch(:id)} ).at(0)
+    answer = d.experts
+
+    render( {:plain => answer.to_json } )
+  end
+
   #neighborhoods
   def list_neighborhoods
     answer = Neighborhood.all
@@ -36,7 +50,13 @@ class ApplicationController < ActionController::Base
 
   #venues
   def list_venues
-    answer = Venue.all
+    neighborhood_id = params.fetch(:neighborhood_id, nil)
+    if neighborhood_id.nil?
+      answer = Venue.all
+    else
+      n = Neighborhood.where( {:id => neighborhood_id} ).at(0)
+      answer = n.venues
+    end
 
     render( {:plain => answer.to_json } )
   end
@@ -50,6 +70,20 @@ class ApplicationController < ActionController::Base
   def list_venue_bookmarks
     v = Venue.where( {:id => params.fetch(:id)} ).at(0)
     answer = v.bookmarks
+
+    render( {:plain => answer.to_json } )
+  end
+
+  def venue_specialties
+    v = Venue.where( {:id => params.fetch(:id)} ).at(0)
+    answer = v.specialties
+
+    render( {:plain => answer.to_json } )
+  end
+
+  def venue_fans
+    v = Venue.where( {:id => params.fetch(:id)} ).at(0)
+    answer = v.fans
 
     render( {:plain => answer.to_json } )
   end
@@ -69,7 +103,13 @@ class ApplicationController < ActionController::Base
 
   def list_user_bookmarks
     u = User.where( {:id => params.fetch(:id)} ).at(0)
-    answer = u.bookmarks
+
+    dish_id = params.fetch(:dish_id,nil)
+    if dish_id.nil?
+      answer = u.bookmarks
+    else
+      answer = u.bookmarks.where( {:dish_id => dish_id} ).distinct
+    end
 
     render( {:plain => answer.to_json } )
   end

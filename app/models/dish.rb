@@ -19,5 +19,10 @@ class Dish < ApplicationRecord
     return Cuisine.where( {:id => self.cuisine_id} ).distinct
   end
 
+  def experts
+    array_of_venue_ids = self.bookmarks.pluck(:venue_id)
+
+    return Venue.where( {:id => array_of_venue_ids} ).distinct
+  end
 
 end

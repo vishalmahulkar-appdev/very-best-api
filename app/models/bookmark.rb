@@ -13,4 +13,9 @@
 #
 
 class Bookmark < ApplicationRecord
+
+  def dish
+    return Dish.where( {})
+  end
+
 end

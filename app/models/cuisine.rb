@@ -9,4 +9,10 @@
 #
 
 class Cuisine < ApplicationRecord
+
+  def dishes
+    return Dish.where( {:cuisine_id => self.id} ).distinct
+  end
+  
+
 end

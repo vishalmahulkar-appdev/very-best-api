@@ -20,7 +20,7 @@ class Venue < ApplicationRecord
     return Neighborhood.where( {:id => self.neighborhood_id} ).at(0)
   end
 
-  def specialities
+  def specialties
     array_of_dish_ids = self.bookmarks.pluck(:dish_id)
 
     return Dish.where( {:id => array_of_dish_ids} ).distinct
