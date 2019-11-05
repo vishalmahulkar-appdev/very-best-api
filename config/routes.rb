@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   match("/users", {:controller => "application", :action => "list_users", :via => "get"} )
   match("/users/:id", {:controller => "application", :action => "user_details", :via => "get"} )
   match("/users/:id/bookmarks", {:controller => "application", :action => "list_user_bookmarks", :via => "get"} )
+  match("/users/:id/bookmarked_dishes", {:controller => "application", :action => "list_user_bookmarked_dishes", :via => "get"} )
 
   #bookmark
   match("/add_bookmark", {:controller => "application", :action => "add_bookmark", :via => "get"} )

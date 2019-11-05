@@ -74,6 +74,13 @@ class ApplicationController < ActionController::Base
     render( {:plain => answer.to_json } )
   end
 
+  def list_user_bookmarked_dishes
+    u = User.where( {:id => params.fetch(:id)} ).at(0)
+    answer = u.bookmarked_dishes
+
+    render( {:plain => answer.to_json } )
+  end
+
   #bookmark
   def add_bookmark
 

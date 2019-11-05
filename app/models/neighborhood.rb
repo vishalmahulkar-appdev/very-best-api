@@ -9,4 +9,11 @@
 #
 
 class Neighborhood < ApplicationRecord
+
+  def venues
+    return Venue.where( {:neighborhood_id => self.id} )
+  end
+
+  
+
 end

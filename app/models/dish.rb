@@ -12,7 +12,11 @@
 class Dish < ApplicationRecord
 
   def bookmarks
-    return Bookmark.where( {:dish_id => self.id} )
+    return Bookmark.where( {:dish_id => self.id} ).distinct
+  end
+
+  def cuisine
+    return Cuisine.where( {:id => self.cuisine_id} ).distinct
   end
 
 
